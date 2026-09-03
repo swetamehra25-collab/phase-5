@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ask GEmini</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="brand">
+                Ask GEmini
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <section class="card">
+
+            <div class="content">
+
+                <p class="welcome">
+                 Welcome to Ask GEmini 
+                </p>
+
+                <h1 class="title">
+                    How can I help you?
+                </h1>
+
+                <p class="subtitle">
+                   Ask a question, explore an idea, or simply start a conversation.
+                </p>
+
+
+                <!-- Question Form -->
+                <div class="form-row">
+
+                    <input
+                        type="text"
+                        id="question"
+                        placeholder="Ask something..."
+                        aria-label="Question input"
+                    >
+
+                    <button
+                        id="submitBtn"
+                        class="btn"
+                    >
+                        Ask
+                    </button>
+
+                </div>
+
+
+                <!-- Answer -->
+                <div
+                    id="answer"
+                    class="answer"
+                    aria-live="polite"
+                >
+                    <span class="answer-placeholder">
+                        Your answer will appear here...
+                    </span>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+
+        <div class="footer-inner">
+
+            <small>
+                © <span id="year"></span> Ask GEmini
+            </small>
+
+            <p>
+                Made by Sweta Mehra
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+

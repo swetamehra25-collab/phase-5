@@ -1,27 +1,46 @@
+
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
+import { GoogleGenAI } from "@google/genai";
 
 const app = express();
 
+// __dirname for ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-const { GoogleGenAI } = await import("@google/genai");
+// Serve frontend files
+const frontendPath = path.join(__dirname, "../../frontend");
 
+app.use(express.static(frontendPath));
+
+// Gemini
 const ai = new GoogleGenAI({
     apiKey: process.env.GEMINI_API_KEY
 });
 
-
-
+// Home page
 app.get("/", (req, res) => {
-    res.send("backend is working");
+    res.sendFile(path.join(frontendPath, "index.html"));
 });
 
+// Ask Gemini
 app.post("/ask", async (req, res) => {
     try {
-        const question = req.body.question;
+        const { question } = req.body;
+
+        if (!question) {
+            return res.status(400).json({
+                message: "Question is required"
+            });
+        }
 
         console.log("Question:", question);
 
@@ -35,7 +54,7 @@ app.post("/ask", async (req, res) => {
         });
 
     } catch (error) {
-        console.log("GEMINI ERROR:", error);
+        console.error("GEMINI ERROR:", error);
 
         res.status(500).json({
             message: error.message
@@ -43,6 +62,6 @@ app.post("/ask", async (req, res) => {
     }
 });
 
-app.listen(3000, () => {
-    console.log("server running on port 3000");
-});
+// IMPORTANT FOR VERCEL
+export default app;
+

@@ -15,7 +15,7 @@ submitBtn.addEventListener("click", async () => {
     answer.innerText = "Thinking...";
 
     try {
-        const response = await fetch("http://localhost:3000/ask", {
+        const response = await fetch("https://phase-5-1sln5.onrender.com", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

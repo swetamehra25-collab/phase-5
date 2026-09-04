@@ -13,10 +13,7 @@ const ai = new GoogleGenAI({
     apiKey: process.env.GEMINI_API_KEY
 });
 
-console.log(
-    "API KEY STATUS:",
-    process.env.GEMINI_API_KEY ? "FOUND" : "NOT FOUND"
-);
+
 
 app.get("/", (req, res) => {
     res.send("backend is working");

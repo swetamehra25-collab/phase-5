@@ -171,6 +171,7 @@ body {
 .card::before {
     content: "";
 
+    
     position: absolute;
 
     width: 300px;

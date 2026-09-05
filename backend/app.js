@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 // Serve frontend files
-const frontendPath = path.join(__dirname, "../../frontend");
+const frontendPath = path.join(__dirname, "../Frontend");
 
 app.use(express.static(frontendPath));
 
@@ -65,3 +65,6 @@ app.post("/ask", async (req, res) => {
 // IMPORTANT FOR VERCEL
 export default app;
 
+app.listen(3000, () => {
+    console.log(`Server running on port ${PORT}`);
+});
